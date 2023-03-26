@@ -8,8 +8,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from locations.models import Location
-from user.models import User
+from user.models import User, Location
 
 
 class UserView(ListView):

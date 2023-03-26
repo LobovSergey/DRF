@@ -25,10 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ads',
-    'categories',
-    'locations',
     'user',
-
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -117,3 +115,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TOTAL_ON_PAGE = 10
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework'
+}

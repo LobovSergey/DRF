@@ -4,8 +4,8 @@ import os
 
 NAME_PROJECT = {
     "ad": "ads.",
-    "category": "categories.",
-    "location": "locations.",
+    "category": "ads.",
+    "location": "user.",
     "user": "user."
 }
 AD_CSV = os.path.abspath('ad.csv')
@@ -60,7 +60,7 @@ class Convertation:
         elif csv_name == 'category':
             return [
                 {
-                    "model": NAME_PROJECT[csv_name] + "categories",
+                    "model": NAME_PROJECT[csv_name] + "category",
                     "pk": dictionary["id"],
                     "fields":
                         {
