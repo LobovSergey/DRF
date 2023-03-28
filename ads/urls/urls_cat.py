@@ -1,9 +1,10 @@
 from django.urls import path
 
-from ads.views import CategoriesView, CategoryDetailView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
+from ads.views.cat_views import CategoryView, CategoryDetailView, CategoryCreateView, CategoryUpdateView, \
+    CategoryDeleteView
 
 urlpatterns = [
-    path('', CategoriesView.as_view()),
+    path('', CategoryView.as_view()),
     path('<int:pk>/', CategoryDetailView.as_view()),
     path('create/', CategoryCreateView.as_view()),
     path('<int:pk>/update/', CategoryUpdateView.as_view()),
