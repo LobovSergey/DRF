@@ -25,23 +25,18 @@ class AnnouncementView(ListAPIView):
     serializer_class = AnnouncementSerializer
 
     def get(self, request, *args, **kwargs):
-        q = request.query_params
-        print(q)
-        searched_text = request.query_params.get('text', None)
-        searched_cat_id = request.query_params.get('category_id', None)
-        price_from = request.query_params.get('price_from', None)
-        price_to = request.query_params.get('price_to', None)
+        querry_args = request.query_params
 
-        if searched_text:
-            self.queryset = self.queryset.filter(description__icontains=searched_text)
-        if searched_cat_id:
-            self.queryset = self.queryset.filter(category_id=searched_cat_id)
-        if price_from and price_to:
-            self.queryset = self.queryset.filter(price__range=[price_from, price_to])
-        if price_from:
-            self.queryset = self.queryset.filter(price__gte=price_from)
-        if price_to:
-            self.queryset = self.queryset.filter(price__lte=price_to)
+        if querry_args['text']:
+            self.queryset = self.queryset.filter(description__icontains=querry_args['text'])
+        if querry_args['category_id']:
+            self.queryset = self.queryset.filter(category_id=querry_args['category_id'])
+        if querry_args['price_from'] and querry_args['price_to']:
+            self.queryset = self.queryset.filter(price__range=[querry_args['price_from'], querry_args['price_to']])
+        if querry_args['price_from']:
+            self.queryset = self.queryset.filter(price__gte=querry_args['price_from'])
+        if querry_args['price_to']:
+            self.queryset = self.queryset.filter(price__lte=querry_args['price_to'])
 
         return super().get(request, *args, **kwargs)
 
