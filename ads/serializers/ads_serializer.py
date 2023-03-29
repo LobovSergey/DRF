@@ -13,8 +13,8 @@ class AnnouncementSerializer(serializers.ModelSerializer):
 
 
 class AnnouncementDetailSerializer(serializers.ModelSerializer):
-    author = serializers.SlugRelatedField(many=True, slug_field='name', read_only=True)
-    category = serializers.SlugRelatedField(many=True, slug_field='name', read_only=True)
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    category = serializers.SlugRelatedField(slug_field='name', read_only=True)
 
     class Meta:
         model = Announcement
@@ -24,7 +24,7 @@ class AnnouncementDetailSerializer(serializers.ModelSerializer):
 class AnnouncementCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
-        exclude = ["id", "is_published"]
+        exclude = ["is_published"]
 
 
 class AnnouncementDeleteSerializer(serializers.ModelSerializer):
@@ -35,5 +35,4 @@ class AnnouncementDeleteSerializer(serializers.ModelSerializer):
 class AnnouncementUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
-        exclude = ["id", "is_published"]
-
+        exclude = ["is_published"]
